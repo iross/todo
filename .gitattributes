@@ -1,0 +1,3 @@
+todo.txt filter=git-crypt diff=git-crypt
+done.txt filter=git-crypt diff=git-crypt
+time/* filter=git-crypt diff=git-crypt
