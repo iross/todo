@@ -1,0 +1,14 @@
+repos:
+  - repo: local
+    hooks:
+      - id: bartib-sanity
+        name: bartib sanity
+        # bartib exits 0 even when it finds problems, so fail on any output other than the all-clear.
+        entry: >-
+          bash -c 'set -euo pipefail;
+          for f in "$@"; do
+            out=$(bartib -f "$f" sanity);
+            if [ "$out" != "No unusual activities." ]; then echo "$f:"; echo "$out"; exit 1; fi;
+          done' --
+        language: system
+        files: \.bartib$
